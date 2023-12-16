@@ -13,7 +13,7 @@ class CourseRepository
     }
 
     public function all(){
-        return $this->entity->get();
+        return $this->entity->all();
     }
 
     public function find(string $id){
