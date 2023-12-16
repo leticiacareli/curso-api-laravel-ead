@@ -13,4 +13,10 @@ class CourseController extends Controller
         
         return CourseResource::collection($courses);
     }
+
+    public function show($id){
+        $course = Course::findOrFail($id);
+
+        return new CourseResource($course);
+    }
 }
