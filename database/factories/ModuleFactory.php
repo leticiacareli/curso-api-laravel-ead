@@ -3,14 +3,16 @@
 namespace Database\Factories;
 
 use App\Models\Course;
+use App\Models\Module;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Course>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Module>
  */
-class CourseFactory extends Factory
+class ModuleFactory extends Factory
 {
-    protected $model = Course::class;
+    
+    protected $model = Module::class;
     /**
      * Define the model's default state.
      *
@@ -19,8 +21,8 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'          => $this->faker->unique()->name(),
-            'description'   => $this->faker->sentence(20),
+            'name'      => $this->faker->name(),
+            'course_id' => Course::factory(),
         ];
     }
 }
