@@ -16,10 +16,10 @@ class CourseResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'course_name' => $this->name,
-            'description' => $this->description,
-            'image' => $this->image ? Storage::url($this->image) : '',
+            'id'            => $this->id,
+            'course_name'   => $this->name,
+            'description'   => $this->description,
+            'image'         => $this->image ? Storage::url($this->image) : '',
         ];
     }
 }
