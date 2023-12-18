@@ -15,6 +15,6 @@ class SupportController extends Controller
     }
 
     public function index(Request $request){
-        return SupportResource::collection($this->repository->all());
+        return SupportResource::collection($this->repository->findByUserId($request->all()));
     }
 }

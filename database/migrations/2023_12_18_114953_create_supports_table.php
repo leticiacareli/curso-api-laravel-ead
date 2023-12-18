@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('supports', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->uuid('id')->primary();
             $table->text('description');
             $table->enum('status', ['P', 'A', 'C'])->default('P'); //P -> pendente, A -> aguardando resposta do aluno, C -> concluído
             $table->foreignIdFor(Lesson::class);

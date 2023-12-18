@@ -22,5 +22,13 @@ class Support extends Model
         'P' => 'Pendente, aguardando professor',
         'A' => 'Pendente, aguardando aluno',
         'C' => 'Concluído',
-    ]; 
+    ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function lesson(){
+        return $this->belongsTo(Lesson::class);
+    }
 }
