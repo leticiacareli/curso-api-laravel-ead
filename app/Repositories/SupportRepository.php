@@ -36,4 +36,16 @@ class SupportRepository
                     })->get();
 
     }
+
+    public function store(array $data){
+        $created = $this->getUserAuth()
+                        ->supports()
+                        ->create([
+                            'lesson_id'     => $data['lesson'],
+                            'description'   => $data['description'],
+                            'status'        => $data['status'],
+                        ]);
+
+        return $created;
+    }
 }
