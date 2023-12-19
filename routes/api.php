@@ -17,5 +17,6 @@ Route::get('/lessons/{id}', [LessonController::class, 'show']);
 
 Route::get('/supports', [SupportController::class, 'index']);
 Route::post('/supports', [SupportController::class, 'store']);
+Route::get('/supports/my-supports', [SupportController::class, 'mySupports']);
 
 Route::post('/replies', [ReplySupportController::class, 'store']);
