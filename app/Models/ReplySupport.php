@@ -13,6 +13,11 @@ class ReplySupport extends Model
     public $incrementing = false;
     protected $keyType = 'uuid';
 
+    //atualizar a propriedade timestamps da tabela support
+    protected $touches = [
+        'support',
+    ];
+
     protected $fillable = [
         'description',
         'support_id',

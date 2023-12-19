@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\ReplySupportController;
 use App\Http\Controllers\SupportController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,5 @@ Route::get('/lessons/{id}', [LessonController::class, 'show']);
 
 Route::get('/supports', [SupportController::class, 'index']);
 Route::post('/supports', [SupportController::class, 'store']);
-Route::post('/supports/{id}/replies', [SupportController::class, 'storeReply']);
+
+Route::post('/replies', [ReplySupportController::class, 'store']);

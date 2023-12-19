@@ -27,6 +27,11 @@ class StoreReplySupportRequest extends FormRequest
                 'min:3',
                 'max:10000',
             ],
+            
+            'support' => [
+                'required',
+                'exists:supports,id',
+            ],
         ];
     }
 }
