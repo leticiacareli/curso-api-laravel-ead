@@ -17,6 +17,10 @@ class SupportRepository
         return User::first();
     }
 
+    public function find(string $id){
+        return $this->entity->findOrFail($id);
+    }
+
     public function findByUserId(array $filters = []){
         return $this->getUserAuth()
                     ->supports()
@@ -46,6 +50,19 @@ class SupportRepository
                             'status'        => $data['status'],
                         ]);
 
+        return $created;
+    }
+
+    public function storeReply(string $supportId, array $data){
+        $userAuth = $this->getUserAuth();
+        
+        $created = $this->find($supportId)
+                        ->replies()
+                        ->create([
+                            'description' => $data['description'],
+                            'user_id' => $userAuth->id,
+                        ]);
+        
         return $created;
     }
 }

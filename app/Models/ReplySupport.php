@@ -6,7 +6,7 @@ use App\Models\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Support extends Model
+class ReplySupport extends Model
 {
     use HasFactory, UuidTrait;
 
@@ -15,25 +15,15 @@ class Support extends Model
 
     protected $fillable = [
         'description',
-        'status',
-        'lesson_id',
+        'support_id',
+        'user_id',
     ];
 
-    public $statusOptions = [
-        'P' => 'Pendente, aguardando professor',
-        'A' => 'Pendente, aguardando aluno',
-        'C' => 'Concluído',
-    ];
+    public function support(){
+        return $this->belongsTo(Support::class);
+    }
 
     public function user(){
         return $this->belongsTo(User::class);
-    }
-
-    public function lesson(){
-        return $this->belongsTo(Lesson::class);
-    }
-
-    public function replies(){
-        return $this->hasMany(ReplySupport::class);
     }
 }
