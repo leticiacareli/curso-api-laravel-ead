@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ReplySupportController;
 use App\Http\Controllers\SupportController;
 use Illuminate\Support\Facades\Route;
+
+Route::post('/auth', [AuthController::class, 'auth']);
 
 Route::get('/courses', [CourseController::class, 'index']);
 Route::get('/courses/{id}', [CourseController::class, 'show']);
