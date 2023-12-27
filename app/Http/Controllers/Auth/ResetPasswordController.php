@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -26,23 +27,8 @@ class ResetPasswordController extends Controller
                             : response()->json(['email' => __($status)], 422);
     }
 
-    public function resetPassword(Request $request){
-        $request->validate([
-            'token' => [
-                'required',
-            ],
-
-            'email' => [
-                'required',
-                'email',
-            ],
-
-            'password' => [
-                'required',
-                'min:6',
-                'max:15',
-            ],
-        ]);
+    public function resetPassword(ResetPasswordRequest $request){
+        $request->validated();
 
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
