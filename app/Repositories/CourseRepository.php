@@ -13,10 +13,10 @@ class CourseRepository
     }
 
     public function all(){
-        return $this->entity->all();
+        return $this->entity->with('modules.lessons')->get();
     }
 
     public function find(string $id){
-        return $this->entity->findOrFail($id);
+        return $this->entity->with('modules.lessons')->findOrFail($id);
     }
 }

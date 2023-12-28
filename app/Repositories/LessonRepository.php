@@ -16,7 +16,10 @@ class LessonRepository
     }
 
     public function findByModuleId(string $moduleId){
-        return $this->entity->where('module_id', $moduleId)->get();
+        return $this->entity
+                    ->where('module_id', $moduleId)
+                    ->with('supports.replies')
+                    ->get();
     }
 
     public function find(string $id){
