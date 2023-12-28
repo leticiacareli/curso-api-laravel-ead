@@ -20,7 +20,7 @@ class LessonResource extends JsonResource
             'url'           => $this->url,
             'description'   => $this->description,
             'video'         => $this->video,
-            'views'         => $this->views
+            'views'         => ViewResource::collection($this->whenLoaded('views'))
         ];
     }
 }
