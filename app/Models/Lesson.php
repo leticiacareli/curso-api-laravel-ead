@@ -22,4 +22,14 @@ class Lesson extends Model
     public function supports(){
         return $this->hasMany(Support::class);
     }
+
+    //retornando as views do usuário autenticado
+    public function views(){
+        return $this->hasMany(View::class)
+                    ->where(function($query){
+                        if(auth()->check()){
+                            return $query->where('user_id', auth()->user()->id);
+                        }
+                    });
+    }
 }
